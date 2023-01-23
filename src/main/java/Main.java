@@ -27,11 +27,10 @@ public class Main {
         spark.sparkContext().hadoopConfiguration().set("fs.s3a.endpoint", "s3.amazonaws.com");
 
         // read file names only, the contents
-        String[] filenameLength = spark.read().format("csv").load(PATH_TO_S3_FLE).inputFiles();
         String[] filesNames = spark.read().format("csv").load(PATH_TO_S3_FLE).inputFiles();
 
         // create stream to
-        Arrays.stream(filenameLength).forEach(item -> {
+        Arrays.stream(filesNames).forEach(item -> {
             System.out.println(item);
         });
 
