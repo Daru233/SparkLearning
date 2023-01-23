@@ -26,6 +26,8 @@ public class Main {
         spark.sparkContext().hadoopConfiguration().set("fs.s3a.secret.key", AWS_SECRET_KEY);
         spark.sparkContext().hadoopConfiguration().set("fs.s3a.endpoint", "s3.amazonaws.com");
 
+        // TODO glob pattern for paths
+
         // read file names only, the contents
         String[] filesNames = spark.read().format("csv").load(PATH_TO_S3_FLE).inputFiles();
 
